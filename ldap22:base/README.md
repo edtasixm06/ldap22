@@ -19,6 +19,13 @@ docker build -t edtasixm06/ldap22:base
 ```
 ```
 docker run --rm --name ldap.edt.org -h ldap.edt.org --net 2hisix -p 389:389 -d edtasixm06/ldap21:base
-```
 
+docker ps
+```
+```
+nmap <ip-container ldap>
+ldapsearch -x -LLL -b 'dc=edt,dc=org'
+ldapsearch -x -LLL -h <ip-container> -b 'dc=edt,dc=org'
+docker exec -it ldap.edt.org ps ax
+```
 
