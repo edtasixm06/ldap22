@@ -20,7 +20,7 @@ ASIX M06-ASO Escola del treball de barcelona
 
 #### Desplegament
 ```
-docker build -t edtasixm06/ldap22:base
+docker build -t edtasixm06/ldap22:base .
 ```
 ```
 docker run --rm --name ldap.edt.org -h ldap.edt.org --net 2hisix -p 389:389 -d edtasixm06/ldap21:base
