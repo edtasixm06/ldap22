@@ -27,7 +27,7 @@ docker network create 2hisx
 docker network inspect 2hisx
 ```
 ```
-docker run --rm --name ldap.edt.org -h ldap.edt.org --net 2hisix -p 389:389 -d edtasixm06/ldap21:base
+docker run --rm --name ldap.edt.org -h ldap.edt.org --net 2hisx -p 389:389 -d edtasixm06/ldap21:base
 
 docker ps
 ```
