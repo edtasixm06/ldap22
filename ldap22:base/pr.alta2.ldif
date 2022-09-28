@@ -1,0 +1,15 @@
+dn: ou=vendes,dc=edt,dc=org
+objectclass: organizationalunit
+ou: vendes
+description: vendes de la base de dades
+
+dn: cn=John Doe,ou=vendes,dc=edt,dc=org
+objectClass: inetOrgPerson
+objectClass: posixAccount
+cn: John Doe
+sn: joan
+uid: john
+uidNumber: 1010
+gidNumber: 300
+homeDirectory: /tmp/home/john
+

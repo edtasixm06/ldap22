@@ -1,0 +1,30 @@
+dn: cn=Jordi Mas,ou=usuaris,dc=edt,dc=org
+changetype: delete
+
+dn: cn=Anna Pou,ou=usuaris,dc=edt,dc=org
+changetype: add
+objectclass: posixAccount
+objectclass: inetOrgPerson
+cn: Anna Pou
+sn: Pou
+uid: anna
+uidNumber: 5002
+gidNumber: 600
+homeDirectory: /tmp/home/anna
+
+dn: cn=Marta Mas,ou=usuaris,dc=edt,dc=org
+changetype: modify
+delete: description
+-
+add: mail
+mail: noumail@edt.org
+-
+replace: homephone
+homephone: 888-888-888
+
+dn: cn=Peret Pou,ou=usuaris,dc=edt,dc=org
+changetype: modrdn
+newrdn: cn=Pere Pou
+deleteoldrdn: 1
+newsuperior: ou=clients,dc=edt,dc=org
+
