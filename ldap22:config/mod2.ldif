@@ -1,5 +1,10 @@
 dn: olcDatabase={1}mdb,cn=config
 changetype: modify
-replace: olcRootPW 
-olcRootPW: jupiter
+replace: olcRootPW
+olcRootPw: jupiter
+-
+delete: olcAccess
+-
+add: olcAccess
+olcAccess: to * by * write
 
