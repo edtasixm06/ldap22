@@ -8,33 +8,41 @@ Podeu trobar la documentació del mòdul a [ASIX-M06](https://sites.google.com/s
 ASIX M06-ASO Escola del treball de barcelona
 
 
-### Ldap servers:
 
- * **edtasixm06/ldap22:base** Server bàsic ldap, amb base de dades edt.org.
-   Aquesta imatge engega amb CMD un script anomenat startup.sh que fa el següent:
-   * Esborrar els directoris de configuració i de dades
-   * Generar el directori de configuració dinàmica slapd.d a partir del fitxer de configuració slapd.conf
-   * Injectar a baix nivell les dades de la BD 'populate' de l'organització dc=edt,dc=org
-   * Assignar la propietat i grup del directori de ddaes i de configuració a l'usuari *openldap*
-   * Engegar el servei slapd amb el paràmetre que fa debug per mantenir-lo engegat en foreground
+ * **edtasixm06/ldap22:config** Configuració dinàmica del servidor.
+   Definir un compte d’administració per a cn=config. Consultes amb ldapsearch de cn=config.
+   Modificacions de la configuració amb ldapmodify usant l’usuari i 
+   passwd de l’administrador de cn=config.
+   Slapd.conf → slaptest → /etc/openldap/slapd.d → fitxers ldif.
+   cn=config. Exemple mod2.ldif (posar atenció a no deixar espis al final dels ldif)
 
 #### Desplegament
 ```
-docker build -t edtasixm06/ldap22:base .
+# Atenció no deixar espais als finals de linia
+dn: olcDatabase={1}mdb,cn=config
+changetype: modify
+replace: olcRootPW
+olcRootPw: jupiter
+-
+delete: olcAccess
+-
+add: olcAccess
+olcAccess: to * by * write
 ```
-```
-docker network create 2hisx
-docker network inspect 2hisx
-```
-```
-docker run --rm --name ldap.edt.org -h ldap.edt.org --net 2hisx -p 389:389 -d edtasixm06/ldap21:base
 
-docker ps
 ```
+$ ldapmodify -vx -D 'cn=Sysadmin,cn=config' -w syskey -f mod2.ldif
+
+$ ldapwhoami -x -D 'cn=Manager,dc=edt,dc=org'      -w jupiter
+
+$ ldapmodify -x -D 'cn=Anna Pou,ou=usuaris,dc=edt,dc=org' -w anna -f mod.ldif
+
+$ ldapmodify -x -D 'cn=Pere Pou,ou=usuaris,dc=edt,dc=org' -w pere -f mod.ldif
 ```
-nmap <ip-container ldap>
-ldapsearch -x -LLL -b 'dc=edt,dc=org'
-ldapsearch -x -LLL -h <ip-container> -b 'dc=edt,dc=org'
-docker exec -it ldap.edt.org ps ax
+
+```
+$ ldapsearch -x -LLL -D 'cn=Sysadmin,cn=config' -w syskey -b 'cn=config'
+
+$ ldapsearch -x -LLL -D 'cn=Sysadmin,cn=config' -w syskey -b 'olcDatabase={1}mdb,cn=config'
 ```
 
