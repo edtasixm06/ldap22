@@ -2,7 +2,7 @@
 
 ## Exercici per fer (2): edtasixm06/ldap22:editat
 
- * Ggenerar un sol fitxer ldif anomenat edt-org.ldif (usuaris0-11)
+ * Ggenerar un sol fitxer ldif anomenat edt-org.ldif (usuaris01-10)
  * Afegir en el fitxer dos usuaris i una ou nova inventada i posar-los dins la nova ou.
  * Modificar el fitxer edt.org.ldif  modificant dn dels usuaris utilitzant en lloc del
    cn el uid per identificar-los (rdn).

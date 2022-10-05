@@ -12,7 +12,9 @@ ASIX M06-ASO Escola del treball de barcelona
 
  * **edtasixm06/ldap22:base** Server bàsic ldap, amb base de dades edt.org.
 
- * **edtasixm06/ldap22:editat** 
+ * **edtasixm06/ldap22:editat** Servidor edt.org amb els usuaris identificats per uid, 
+   usuaris típics més usuaris user01-user10, passwd de manager xifrat i activant la base
+   de dades cn=config. 
 
  * **edtasixm06/ldap22:config** Exemples de configuració i configuració
    dinàmica del servidor.
