@@ -121,7 +121,35 @@ description: Watch out for this guy
 ```
 
 
+#### Exemple-1
 
+```
+$ cat acl-e1.ldif 
+dn: olcDatabase={1}mdb,cn=config
+changetype: modify
+delete: olcAccess
+-
+add: olcAccess
+olcAccess: to * by * read
+```
 
+```
+$ ldapmodify -vx -D 'cn=sysadmin,cn=config' -w syskey -f acl-e1.ldif 
+ldap_initialize( <DEFAULT> )
+delete olcAccess:
+add olcAccess:
+	to * by * read
+modifying entry "olcDatabase={1}mdb,cn=config"
+modify complete
+```
 
+```
+$ ldapsearch -x -LLL -D 'cn=sysadmin,cn=config' -w syskey -b 'olcDatabase={1}mdb,cn=config' olcAccess
+dn: olcDatabase={1}mdb,cn=config
+olcAccess: {0}to * by * read
+```
+
+```
+$ ldapmodify -cvx -D 'uid=pere,ou=usuaris,dc=edt,dc=org' -w pere -f mod1.ldif 
+```
 
