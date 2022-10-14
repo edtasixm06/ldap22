@@ -1,0 +1,5 @@
+
+slap.conf --->  /etc/openldap/slapd.d
+                configuració: format de directoris i fitxers LDIFF
+
+
