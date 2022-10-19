@@ -13,6 +13,12 @@ ASIX M06-ASO Escola del treball de barcelona
  * **edtasixm06/ldap22:schema** imatge ldap per implementar
    un schema propi de futbolistes.
 
+   * futbolistaA.schema Derivat de inetorgPerson, structural, injectat dades de dades-futbolA.ldif.
+
+   * futbolistaB.schema. Structural derivat de TOP.
+
+   * futbolistaC.schema. Auxiliary.
+
 
 ```
 $ docker run --rm --name ldap.edt.org -h ldap.edt.org --net 2hisx -p 389:389 -d edtasixm06/ldap22:schema
