@@ -1,0 +1,8 @@
+dn: cn=dembele,ou=usuaris,dc=edt,dc=org
+changetype: modify
+replace: x-lesionat
+x-lesionat: FALSE
+-
+add: x-dorsal
+x-dorsal: 22
+
