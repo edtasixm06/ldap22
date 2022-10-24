@@ -1,0 +1,91 @@
+# practica.schema
+#
+# x-oficis:
+# 	x-nom
+# 	x-foto
+# 	x-cv
+# 	x-ofici
+# 	x-anys-treballant
+#
+# x-futur-millonari:
+# 	x-nom-futur-millonari
+#	x-patrimoni
+#	x-inversor-cripto
+#
+# Derivat de TOP, Auxiliary
+# -------------------------------------------
+
+attributetype (1.1.2.1.1 NAME 'x-nom'
+  DESC 'Nom del treballador.'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE 
+ )
+ 
+attributetype (1.1.2.1.2 NAME 'x-foto'
+  DESC 'Foto del treballador'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.28 
+ )
+
+attributetype ( 1.1.2.1.3 NAME 'x-cv'
+  DESC 'CV del treballador.'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.5
+ )
+  
+attributetype (1.1.2.1.4 NAME 'x-ofici'
+  DESC 'Ofici del treballador.'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE 
+ )
+
+attributetype (1.1.2.1.5 NAME 'x-anys-treballant'
+  DESC 'Anys treballant el treballador.'
+  EQUALITY integerMatch
+  ORDERING integerOrderingMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+  SINGLE-VALUE 
+ )
+ 
+attributetype (1.1.2.2.1 NAME 'x-nom-futur-millonari'
+  DESC 'Nom del futur millonari.'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE 
+ )
+
+attributetype (1.1.2.2.2 NAME 'x-patrimoni'
+  DESC 'Patrimoni del futur millonari.'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE 
+ )
+ 
+attributetype (1.1.2.2.3 NAME 'x-inversor-cripto'
+  DESC 'Inversor en criptomonedas true/false.'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
+  SINGLE-VALUE 
+ )
+
+#x-----------------------------------------
+
+objectClass (1.1.2.1.1 NAME 'x-oficis'
+  DESC 'Oficis dels treballadors.'
+  SUP TOP
+  STRUCTURAL
+  MUST ( x-nom $ x-ofici )
+  MAY ( x-foto $ x-cv $ x-anys-treballant $ x-inversor-cripto )
+ )
+  
+objectClass (1.1.2.2.2 NAME 'x-futur-millonari'
+  DESC 'Possibilitat de ser futur millonari.'
+  SUP TOP
+  AUXILIARY
+  MUST x-nom-futur-millonari
+  MAY ( x-patrimoni $ x-inversor-cripto )
+ )
+
