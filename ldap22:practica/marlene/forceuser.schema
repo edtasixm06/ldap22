@@ -1,0 +1,43 @@
+# forceuser.schema
+#
+# x-batallas
+# x-side
+# x-rango
+# x-sable
+# Derivat de x-personatge, auxiliary
+# ----------------------------------------------------------------------
+attributetype (1.1.2.3.1 NAME 'x-batallas'
+  DESC 'numero de batallas en les que ha estat el personatge'
+  EQUALITY integerMatch
+  ORDERING integerOrderingMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+  SINGLE-VALUE)
+
+attributetype (1.1.2.3.2 NAME 'x-side'
+  DESC 'si es un jedi o sith'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE)
+
+attributetype (1.1.2.3.3 NAME 'x-rango'
+  DESC 'rango del uso de la fuerza'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE)
+
+attributetype (1.1.2.3.4 NAME 'x-sable'
+  DESC 'color del sable láser'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE)
+
+objectclass (1.1.2.2.2 NAME 'x-forceuser'
+  DESC 'personatges que utilitcen la força'
+  SUP TOP
+  AUXILIARY
+  MUST x-side
+  MAY ( x-batallas $ x-rango $ x-sable ))
+

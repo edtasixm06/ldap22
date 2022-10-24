@@ -1,0 +1,9 @@
+include: file:///opt/docker/padme.ldif
+
+include: file:///opt/docker/ahsoka.ldif
+
+include: file:///opt/docker/anakin.ldif
+
+include: file:///opt/docker/asajj.ldif
+
+include: file:///opt/docker/hansolo.ldif

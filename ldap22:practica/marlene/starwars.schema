@@ -1,0 +1,41 @@
+# starwars.schema
+#
+# x-nom (nombre del personaje)
+# x-afiliacio (fitxer amb una llista)
+# x-foto (una foto)
+# x-batallas (numero de batalles)
+# x-muerto (si se fue a ver a diosito o no)
+# Derivat de TOP, structural
+# -------------------------------------------------------------
+attributetype (1.2.3.4.1 NAME 'x-nom'
+  DESC 'nom del personatge'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE)
+
+attributetype (1.2.3.4.2 NAME 'x-afiliacio'
+  DESC 'llista de afiliacions del personatge'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.5)
+
+attributetype (1.2.3.4.3 NAME 'x-foto'
+  DESC 'fotografia del personatge'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.28)
+
+attributetype (1.2.3.4.4 NAME 'x-muerto'
+  DESC 'si el personatge segueix viu true/false'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7)
+
+attributetype (1.2.3.4.5 NAME 'x-especie'
+  DESC 'especie del personatge'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE)
+
+objectclass (1.1.2.2.1 NAME 'x-personatge'
+  DESC 'personatges de STARWARS'
+  SUP TOP
+  STRUCTURAL
+  MUST ( x-nom $ x-muerto )
+  MAY ( x-afiliacio $ x-especie $ x-foto ))
