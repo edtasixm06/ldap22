@@ -19,7 +19,10 @@ ASIX M06-ASO Escola del treball de barcelona
  * **edtasixm06/ldap22:config** Exemples de configuració i configuració
    dinàmica del servidor.
 
- * **acls**
+ * **edtasixm06/ldap20:acls** Imatge per a fer proves de modificació de les acls usant
+   fitxers de modificació. S'ha incorporat la BD cn=config per a l'administració
+   del servidor dinàmicament.
+
 
  * **edtasixm06/ldap22:schema** Servidor LDAP amb la base de dades edt.org S'ha fet el següent:
 
