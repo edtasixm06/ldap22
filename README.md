@@ -46,23 +46,30 @@ ASIX M06-ASO Escola del treball de barcelona
    objectclass: organizationalunit
    ```
 
-```
-dn: cn=professors,ou=grups,dc=edt,dc=org
-objectclass: posixGroup
-cn: professors
-gidNumber: 601
-description: Grup de professors
-memberUid: pau
-memberUid: pere
-memberUid: jordi
-```
+   ```
+   dn: cn=professors,ou=grups,dc=edt,dc=org
+   objectclass: posixGroup
+   cn: professors
+   gidNumber: 601
+   description: Grup de professors
+   memberUid: pau
+   memberUid: pere
+   memberUid: jordi
+   ```
 
 #### Desplegament
+
+utilitzar la imatge latest (és la grups) i es pot desplegar el phpldapadmin
+
+
 ```
 docker build -t edtasixm06/ldap22:latest
 
 docker run --rm --name ldap.edt.org -h ldap.edt.org --net 2hisx -p 389:389 -d edtasixm06/ldap22:latest
+
+docker run --rm  --name phpldapadmin.edt.org -h phpldapadmin.edt.org --net 2hisx -p 80:80 -d edtasixm06/ldap22:phpldapadmin
 ```
+
 
 
 
