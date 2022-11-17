@@ -19,10 +19,7 @@ ASIX M06-ASO Escola del treball de barcelona
  * **edtasixm06/ldap22:config** Exemples de configuració i configuració
    dinàmica del servidor.
 
- * **edtasixm06/ldap20:acls** Imatge per a fer proves de modificació de les acls usant
-   fitxers de modificació. S'ha incorporat la BD cn=config per a l'administració
-   del servidor dinàmicament.
-
+ * **acls**
 
  * **edtasixm06/ldap22:schema** Servidor LDAP amb la base de dades edt.org S'ha fet el següent:
 
@@ -33,21 +30,21 @@ ASIX M06-ASO Escola del treball de barcelona
 
     * *futbolistaC.schema* Auxiliary.
 
- * **edtasixm06/ldap21:practica**   Imatge de la pràctica de ldap schema.
+ * **edtasixm06/ldap22:practica**   Imatge de la pràctica de ldap schema.
     Feta per els alumnes marlene i licas.
  
- * **edtasixm06/ldap21:group** Imatge final del servei ldap amb usuaris i grups. 
+ * **edtasixm06/ldap22:group** Imatge final del servei ldap amb usuaris i grups. 
    Els usuaris són identificats pel uid per exemple uid=pere,ou=usuaris,dc=edt,dc=org.
    S'han afegit grups dins de una ou=grups que conté els grups, i s'hi han posat els usuaris
    tot validant la coherència de les dades. També s'ha repassat que els homes dels
    usuaris siguin vàlids.
 
-```
-dn: ou=grups,dc=edt,dc=org
-ou: grups
-description: Container per a grups del sistema linux
-objectclass: organizationalunit
-```
+   ```
+   dn: ou=grups,dc=edt,dc=org
+   ou: grups
+   description: Container per a grups del sistema linux
+   objectclass: organizationalunit
+   ```
 
 ```
 dn: cn=professors,ou=grups,dc=edt,dc=org
@@ -62,9 +59,9 @@ memberUid: jordi
 
 #### Desplegament
 ```
-docker build -t edtasixm06/ldap22:base
+docker build -t edtasixm06/ldap22:latest
 
-docker run --rm --name ldap.edt.org -h ldap.edt.org --net 2hisx -p 389:389 -d edtasixm06/ldap22:grup
+docker run --rm --name ldap.edt.org -h ldap.edt.org --net 2hisx -p 389:389 -d edtasixm06/ldap22:latest
 ```
 
 
