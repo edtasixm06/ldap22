@@ -33,7 +33,7 @@ ASIX M06-ASO Escola del treball de barcelona
  * **edtasixm06/ldap22:practica**   Imatge de la pràctica de ldap schema.
     Feta per els alumnes marlene i licas.
  
- * **edtasixm06/ldap22:group** Imatge final del servei ldap amb usuaris i grups. 
+ * **edtasixm06/ldap22:grups** Imatge final del servei ldap amb usuaris i grups. 
    Els usuaris són identificats pel uid per exemple uid=pere,ou=usuaris,dc=edt,dc=org.
    S'han afegit grups dins de una ou=grups que conté els grups, i s'hi han posat els usuaris
    tot validant la coherència de les dades. També s'ha repassat que els homes dels
