@@ -57,6 +57,27 @@ ASIX M06-ASO Escola del treball de barcelona
    memberUid: jordi
    ```
 
+
+ * **edtasixm06/ldap22:acl** Imatge per a fer proves de modificació de les acls usant
+   fitxers de modificació. S'ha incorporat la BD cn=config per a l'administració
+   del servidor dinàmicament.
+
+   Detach:
+   ```
+   docker run --rm --name ldap.edt.org -h ldap.edt.org --net 2hisix -p 389:389 -d edtasixm06/ldap22:acl
+   ```
+
+ * **edtasixm06/ldap22:phpldapadmin** Imatge amb un servidor phpldapadmin. Connecta a al servidor ldap
+   anomenat *ldap.edt.org* per accedir a les bases de dades *dc=edt,dc=org* i *cn=config*. Aquesta imatge
+   està basada en fedora:27 per evitar el canvi de sintaxis de PHP 7.4.
+
+   Detach:
+   ```
+   $ docker run --rm  --name phpldapadmin.edt.org -h phpldapadmin.edt.org --net 2hisx -p 80:80 -d edtasixm06/ldap22:phpldapadmin 
+   ```
+
+
+
 #### Desplegament
 
 utilitzar la imatge latest (és la grups) i es pot desplegar el phpldapadmin
@@ -69,7 +90,6 @@ docker run --rm --name ldap.edt.org -h ldap.edt.org --net 2hisx -p 389:389 -d ed
 
 docker run --rm  --name phpldapadmin.edt.org -h phpldapadmin.edt.org --net 2hisx -p 80:80 -d edtasixm06/ldap22:phpldapadmin
 ```
-
 
 
 
